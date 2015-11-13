@@ -5,23 +5,20 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-h1 {
+h1,
+h2 {
   font-family: 'Carrois Gothic SC';
 }
 
 h2 {
-  font-family: 'Carrois Gothic SC';
   text-align: center;
 }
 
-h3 {
+h3,
+li,
+p {
   margin: 0;
 }
-
-p  {
-  margin: 0;
-}
-
 
 ul {
   margin-top: 0;
@@ -29,7 +26,6 @@ ul {
 
 li {
    list-style: square;
-   margin: 0;
 }
 
 blockquote {
@@ -45,6 +41,12 @@ blockquote {
 }
 .contact {
   text-align: center;
+  margin-bottom: 1em;
+}
+
+.education {
+  border-top: 4px solid;
+  border-color: #A6A58D;
 }
 
 .flex-container {
@@ -110,6 +112,7 @@ header {
 }
 
 .wrap {
+  background-color: white;
   max-width: 40em;
   margin: 0 auto;
 }
