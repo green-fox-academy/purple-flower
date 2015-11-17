@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Wikipedia form</title>
+    <link href="style/formstyle.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="main-container">
+      <header class="main-header">
+        <nav class="user-menu">
+          <ul>
+            <li>Create account</li>
+            <li>Not logged in</li>
+            <li>Talk</li>
+            <li>Contributions</li>
+            <li>Log in</li>
+          </ul>
+        </nav>
+        <nav class="talk-menu">
+          <ul>
+            <li>Aticle</li>
+            <li>Talk</li>
+          </ul>
+        </nav>
+        <nav class="edit-menu">
+          <ul>
+            <li>Read</li>
+            <li>Edit</li>
+            <li>View history</li>
+          </ul>
+        </nav>
+        <form class="search-menu">
+          <input type="search">
+        </form>
+      </header>
+
+        <main class="main-content">
+          <h1>Create account</h1>
+            <form class="useraccountform" action="index.html" method="post">
+              <p>
+                <label for="username">Username</label><a class="helpmelink" href="#">(help me choose)</a>
+              </p>
+
+              <input type="text" id="username" placeholder="Enter your username">
+
+              <p>
+                <label for="password">Password</label>
+              </p>
+
+              <input type="text" id="password" placeholder="Enter a password">
+
+              <p>
+                <label for="password">Confirm password</label>
+              </p>
+
+              <input type="text" id="password" placeholder="Enter password again">
+
+              <p>
+                <label for="email">E-mail address (optional)</label>
+              </p>
+
+              <input type="email" id="email" placeholder="Enter your e-mail account">
+
+              <p>
+                To edit this page, please enter the words that appear below in the box (<a href="#">more info</a>):
+
+                CAPTCHA Security check
+              </p>
+
+              <p>
+              <button class="submitbutton" type="submit">Create your account</button>
+              </p>
+
+            </form>
+        </main>
+
+      <footer class="main-footer">
+
+      </footer>
+    </div>
+
+      <aside class="main-sidebar">
+        <a href="#" class="logo">Wikipedia</a>
+      </aside>
+
+  </body>
+</html>

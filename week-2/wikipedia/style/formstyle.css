@@ -1,0 +1,38 @@
+
+.main-content p {
+  margin: 0;
+  margin-top: 1em;
+}
+
+.useraccountform {
+  position: relative;
+  width: 290px;
+  padding: 0;
+}
+
+.helpmelink {
+ position: absolute;
+ right: 0;
+}
+
+.useraccountform input, .submitbutton {
+  box-sizing: border-box;
+  width: 290px;
+  height: 33px;
+  margin: 0;
+}
+
+.useraccountform input {
+  font-style: italic;
+}
+
+/*p label {
+  margin-top: 1em;
+}*/
+
+.submitbutton {
+  background: #00af89;
+  color: #fff;
+  border: 1px solid #00af89;
+  font-weight: bold;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Formt</title>
+    <link rel="stylesheet" href="formstyle.css">
+  </head>
+  <body>
+    <h1>Form próba</h1>
+
+    <form action="#" method="post">
+      <p>
+        <label for="valami">Írd ide a valamit</label>
+        <input type="text" id="valami" placeholder="ide">
+      </p>
+      <p>
+        <label for="jelszo">type="password":</label>
+        <input type="password" id="jelszo">
+      </p>
+
+      <p>
+        <label for="emailcim">type="email":</label>
+        <input type="email" id="emailcim">
+      </p>
+
+      <p>
+        <label for="kereso">type="search":</label>
+        <input type="search" id="kereso">
+      </p>
+
+      <p>
+        <label for="szin">type="color":</label>
+        <input type="color" id="szin">
+      </p>
+
+      <p>
+        <label for="szam">type="number":</label>
+        <input type="number" id="szam">
+      </p>
+
+      <p>
+        <label for="csik">type="range":</label>
+        <input type="range" id="csik">
+      </p>
+
+      <p>
+        progress:
+        <progress value="50" max="100">50%</progress>
+      </p>
+
+      <p>
+        <label for="datum">type="date":</label>
+        <input type="date" id="datum">
+      </p>
+
+      <p>
+        <label for="webcim">type="url":</label>
+        <input type="url" id="webcim">
+      </p>
+
+
+      <p>
+        <input type="submit" value="nyomd meg">
+        <button type="submit">gomb</button>
+      </p>
+
+      <p>
+        <label for="legordulo">select:</label>
+        <select id="legordulo">
+          <option disabled selected>válassz egyet!</option>
+          <option>majom</option>
+          <option>csiga</option>
+          <option>banan</option>
+          <option>zsiraf</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="textterulet">textarea:</label>
+        <textarea id="textterulet">hello</textarea>
+      </p>
+    </form>
+
+    <form action="index.html">
+      <p>
+        <label for="ize">Kattintsd be a checkboxot:</label>
+        <input type="checkbox" id="ize">
+      </p>
+
+      <p>
+        <label>radio gomb első verzió</label>
+        <ul>
+          <li>
+            <label>
+              <input type="radio" name="ugyanaz">radio gomb label-e
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="radio" name="ugyanaz">radio gomb label-e
+            </label>
+          </li>
+        </ul>
+
+        <label for="radiogomb">radio gomb</label>
+        <input type="radio" name="ugyanaz" value="ertek1" id="radiogomb">
+        <input type="radio" name="ugyanaz" value="kulonbozo">
+      </p>
+    </form>
+
+  </body>
+</html>
