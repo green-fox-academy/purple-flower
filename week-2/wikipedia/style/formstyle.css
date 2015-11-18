@@ -1,13 +1,22 @@
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 .main-content p {
+  font-size: 0.875em;
+  line-height: 1.7em;
   margin: 0;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 .useraccountform {
+  padding: 0;
   position: relative;
   width: 290px;
-  padding: 0;
 }
 
 .helpmelink {
@@ -17,22 +26,28 @@
 
 .useraccountform input, .submitbutton {
   box-sizing: border-box;
-  width: 290px;
   height: 33px;
   margin: 0;
+  width: 290px;
 }
 
 .useraccountform input {
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
   font-style: italic;
+  padding: 4.2px 4.2px 4.2px 8.4px;
 }
 
-/*p label {
-  margin-top: 1em;
-}*/
+.useraccountform input:focus {
+  border-color: #347bff;
+  box-shadow: inset 0 0 0 2px #347bff;
+  outline: 0;
+}
 
 .submitbutton {
   background: #00af89;
-  color: #fff;
   border: 1px solid #00af89;
+  color: #fff;
+  font-size: 1em;
   font-weight: bold;
 }
