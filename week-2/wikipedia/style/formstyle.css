@@ -44,10 +44,14 @@ a:hover {
   outline: 0;
 }
 
+.g-racaptcha {
+  width: 290px;
+}
+
 .submitbutton {
   background: #00af89;
   border: 1px solid #00af89;
   color: #fff;
-  font-size: 1em;
+  font-size: 14px;
   font-weight: bold;
 }

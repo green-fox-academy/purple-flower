@@ -7,8 +7,11 @@ body {
   display: flex;
   flex-direction: row;
   font-family: sans-serif;
+  font-size: 0.875em;
+  line-height: 1.6;
   margin: 0;
   min-height: 100vh;
+  color: #252525;
 }
 
 h1,
@@ -16,11 +19,22 @@ h2 {
   font-family: serif;
   font-weight: normal;
   border-bottom: 1px solid #aaa;
+  overflow: hidden;
 }
 
 h1 {
   font-size: 28.8px;
   margin: 0;
+}
+
+h3 {
+  margin: 0px;
+}
+
+h5 {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
 }
 
 a {
@@ -70,6 +84,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .user-menu {
   right: 5px;
   top: 5px;
+  color: gray;
 }
 
 .user-menu a, span {
@@ -156,18 +171,98 @@ input[type="search"]::-webkit-search-cancel-button {
   background: red;
 }*/
 
+.source {
+  padding: 10px 0px 10px 0px;
+}
+
+.warning {
+  display: block;
+  padding: 5px 0px 0px 20px;
+}
+
 .biography {
   background: #f9f9f9;
   border: 1px solid #aaa;
   box-sizing: border-box;
   float: right;
   margin: 6px 0px 12px 12px;
-  padding: 25px;
+  padding: 0px 25px 0px 25px;
   width: 270px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.biography p {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.biography dl {
+  line-height: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.biography dt {
+  font-weight: bolder;
+  width: 40%;
+}
+
+.biography dd {
+  margin: 0px;
+  width: 60%;
+}
+
+.page-content {
+  background: #f9f9f9;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  width: 130px;
+  padding: 7px;
+  font-size: 12px;
+}
+
+.page-content ol {
+  padding: 5px
+}
+
+.page-content li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.categories {
+background: #f9f9f9;
+border: 1px solid #aaa;
+box-sizing: border-box;
+color:  #aaa;
+float: bottom;
+padding: 5px;
+margin-top: 14px;
 }
 
 .main-footer {
   height: 150px;
+  padding: 0px;
+  position: relative;
+  color: #333;
+  font-size: 11px;
+  padding-left: 16px;
+}
+
+.main-footer ul {
+  display: block;
+  position: absolute;
+  left: 0px;
+  padding-left: 16px;
+}
+
+.main-footer li {
+  list-style: none;
+  float: left;
+  padding: 5px 5px 5px 0px;
 }
 
 .logo {
@@ -183,4 +278,33 @@ input[type="search"]::-webkit-search-cancel-button {
   order: 0;
   width: 176px;
   flex: 0 0 auto;
+  line-height: 20px;
+  font-size: 12px;
+  color: #4d4d4d;
+  </li>
+}
+
+.main-menu {
+  padding: 0px 0px 0px 15px;
+  list-style: none;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+
+.menu-name {
+  font-weight: normal;
+  padding-left: 15px;
+  padding-top: 5px;
+  margin: 0px;
+  background: url(../images/portal-break.png) no-repeat;
+  position: bottom center;
+}
+
+.sub-menu {
+  list-style: none;
+  padding: 0px 0px 5px 30px;
+  margin: 0px;
+  line-height:20px;
+  font-size: 12px;
 }
