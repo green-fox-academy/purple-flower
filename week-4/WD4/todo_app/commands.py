@@ -1,4 +1,6 @@
 import json
+from datetime import datetime, timezone
+import submenu
 
 def load():
     todo = []
@@ -17,28 +19,54 @@ def save(todo):
 
 
 def add_item(todo):
-    desc = input("Description: ")
-    todo.append({"status": "to do", "description": desc})
+    desc = input("\033[34m" + "Description: " + "\033[39m")
+    input_date = input("\033[34m" + "Enter the due date. (Please use the following format: 2015-12-03)" + "\033[39m")
+    todo.append({"due date": input_date, "status": "to do", "description": desc})
     save(todo)
 
 def list_item(todo):
-    i = 1
-    for n in todo:
-        print(i, n["status"], n["description"])
-        i += 1
+    if todo != []:
+        i = 1
+        for n in todo:
+            print(i, n["due date"] + " \\ " + n["description"] + " \\ " + n["status"])
+            i += 1
+    else:
+        print("\033[34m" + "You don\'t have nothing to do!" + "\033[39m")
 
-def complete_item(todo):
-    completed_item_rang = int(input("Which to do item would you like to set done?"))
-    n = completed_item_rang - 1
-    todo[n]["status"] = "done"
-    save(todo)
 
+def change_status_item(todo):
+    if todo != []:
+        status_item_rang = int(input("\033[34m" + "Which to do item\'s status would you like to change?" + "\033[39m"))
+        submenu.print_status_submenu()
+        status_number = int(input("\033[34m" + "What will be your to do item\'s new status?" + "\033[39m"))
+        n = status_item_rang - 1
+        if status_number == 1:
+            todo[n]["status"] = "to do"
+        elif status_number == 2:
+            todo[n]["status"] = "in progress"
+        elif status_number == 3:
+            todo[n]["status"] = "done"
+        else:
+            print("\033[34m" + "Please choose a number from the menu!" + "\033[39m")
+        save(todo)
+    else:
+        print("\033[34m" + "Your list is empty." + "\033[39m")
+
+def remove_completed_items(todo):
+    if todo != []:
+        for item in todo:
+            if item["status"] == "done":
+                todo.remove(item)
+        print("\033[34m" + "All done items are deleted." + "\033[39m")
+        save(todo)
+    else:
+        print("\033[34m" + "Your list is empty." + "\033[39m")
 
 def remove_item(todo):
-    removed_item_rang = int(input("Which to do item would you like to remove?"))
-    n = removed_item_rang - 1
-    todo.pop(n)
-    save(todo)
-
-"""def remove_all_completed(input_file):
-    for"""
+    if todo != []:
+        removed_item_rang = int(input("Which to do item would you like to remove?"))
+        n = removed_item_rang - 1
+        todo.pop(n)
+        save(todo)
+    else:
+        print("\033[34m" + "Your list is empty." + "\033[39m")
