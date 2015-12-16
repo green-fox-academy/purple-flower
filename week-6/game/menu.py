@@ -25,6 +25,12 @@ class Menu:
             if item.num == input_received:
                 return item.action()
 
+    def selected_item_name(self):
+        selected_item = self.ask_user_input()
+        for item in self.items:
+            if item.num == selected_item:
+                return item.action
+
     def display_menu(self):
         print(self.list_menu())
         self.choose()
