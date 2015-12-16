@@ -1,12 +1,14 @@
 from menu import Menu
 from menu_item import MenuItem
+from character import Character
 
+user = ""
 
 def new_game():
     user_name = input("Please enter your name: ")
+    user = user_name
     print("Your character name is " + user_name + ".")
     new_game_submenu.display_menu()
-
 
 def load_game():
     print("majd kesobb kitalalom")
@@ -16,7 +18,6 @@ def exit_game():
 
 def continue_game():
     continue_submenu.display_menu()
-
 
 def save():
     save_submenu.display_menu()
@@ -67,7 +68,7 @@ save_submenu = Menu([
 
 continue_submenu = Menu([
     MenuItem(1, "Reroll stats", roll_stats),
-    MenuItem(2, "Continue", continue_game ),
+    MenuItem(2, "Continue", continue_game),
     MenuItem(3, "Save", save),
     MenuItem(4, "Quit", quit_submenu)
 ])
