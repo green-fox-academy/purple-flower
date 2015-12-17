@@ -1,22 +1,12 @@
 from menu import Menu
 from menu_item import MenuItem
-from character import Character
+from character import *
 import json
 import os
 
-user = Character()
-monster = Character()
 
-
-def strike(self):
-    player = user.strike_strength()
-    ennemy = monster.strike_strength()
-    if player > ennemy:
-        print("You hit the monster!")
-    elif player < ennemy:
-        print("The monster hit you!")
-    after_strike_submenu.display_menu()
-
+def ultimate_save():
+    save_submenu.display_menu()
 
 def new_game():
     user_name = input("Please enter your name: ")
@@ -64,10 +54,11 @@ def show_quit_submenu():
     quit_submenu.display_menu()
 
 def save_and_quit():
-    json_file_name = input("Please enter your file name: ")
+    json_file_name = input("Please enter a file name: ")
     output_file = open(json_file_name + '.json', 'w')
     json.dump(user.create_dictionary(), output_file)
     output_file.close()
+    Print("Your game is saved.")
     exit()
 
 def save_rewrite_and_quit():
@@ -78,12 +69,10 @@ def save_rewrite_and_quit():
     output_file = open(json_file_name + '.json', 'w')
     json.dump(user.create_dictionary(), output_file)
     output_file.close()
+    Print("Your game is saved.")
     exit()
 
 def resume():
-    pass
-
-def add_new_item():
     pass
 
 def continue_to_potion():
@@ -120,6 +109,12 @@ def begin_game():
     monster.print_start_status_monster()
     fight_submenu.display_menu()
 
+def strike():
+    if fight.is_hit():
+        print("You hit the monster!")
+    else:
+        print("The monster hit you!")
+    after_strike_submenu.display_menu()
 
 def new_strike():
     fight_submenu.display_menu()
@@ -139,12 +134,14 @@ main_menu = Menu([
 new_game_submenu = Menu([
     MenuItem(1, "Reenter name", new_game),
     MenuItem(2, "Continue", continue_newgame),
-    MenuItem(3, "Save", save),
+    MenuItem(3, "Save", ultimate_save),
     MenuItem(4, "Quit", show_quit_submenu),
 ])
 
+
+
 quit_submenu = Menu([
-    MenuItem(1, "Save and Quit", save_and_quit),
+    MenuItem(1, "Save and Quit", ultimate_save),
     MenuItem(2, "Quit without save", exit_game),
     MenuItem(3, "Resume", resume)
 ])
@@ -155,6 +152,8 @@ save_submenu = Menu([
     MenuItem(3, "Resume", resume),
     MenuItem(4, "Quit", show_quit_submenu)
 ])
+
+
 
 continue_submenu = Menu([
     MenuItem(1, "Reroll stats", continue_newgame),
@@ -194,5 +193,6 @@ after_strike_submenu = Menu([
     MenuItem(3, "Retreat", retreat),
     MenuItem(4, "Quit",show_quit_submenu),
 ])
+
 
 main_menu.display_menu()
