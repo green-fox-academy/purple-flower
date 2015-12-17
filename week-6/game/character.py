@@ -3,15 +3,14 @@ from random import randint
 class Character():
     def __init__(self, name = "", inventory = []):
         self.name = name
-        self.random_status()
-        self.current_health = None
-        self.current_luck = None
         self.inventory = ["", "Sword", "Leather Armor"]
 
     def random_status(self):
         self.dexterity = randint(1,6) + 6
         self.health = randint(1,6) + randint(1,6) + 12
         self.luck = randint(1,6) + 6
+        self.current_health = self.health
+        self.current_luck = self.luck
 
     def reduce_health(self):
         self.current_health = self.health - 2
@@ -55,7 +54,6 @@ class Fight:
             user.reduce_health()
 
     def luck(self):
-        user.roll()
         if self.is_hit():
             if user.current_luck < user.roll_number:
                 monster.current_healt -= 1

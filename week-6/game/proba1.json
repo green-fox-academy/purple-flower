@@ -1,1 +1,1 @@
-{"current_health": null, "inventory": ["Potion of Dexterity", "Sword", "Leather Armor"], "max_luck": 12, "name": "1", "current_luck": null, "max_dexterity": 12, "max_health": 18}
+{"current_luck": 11, "inventory": ["Potion of Luck", "Sword", "Leather Armor"], "max_dexterity": 9, "max_health": 17, "name": "player", "current_health": 17, "max_luck": 11}

@@ -5,9 +5,6 @@ import json
 import os
 
 
-def ultimate_save():
-    save_submenu.display_menu()
-
 def new_game():
     user_name = input("Please enter your name: ")
     user.name = user_name
@@ -15,7 +12,18 @@ def new_game():
     new_game_submenu.display_menu()
 
 def load_game():
-    pass
+    print("saved games:")
+    list_json_files()
+
+# def load():
+#     saved_games = []
+#     input_file = open(saved_game_list + ".json", "r")
+#     try:
+#         saved_games = json.load(input_file)
+#     except Exception:
+#         pass
+#     input_file.close()
+#     return saved_games
 
 def exit_game():
     exit()
@@ -34,15 +42,8 @@ def list_json_files():
         print(item.split('.')[0])
     return json_list
 
-# def load():
-#     saved_games = []
-#     input_file = open("saved_games.json", "r")
-#     try:
-#         saved_games = json.load(saved_games)
-#     except Exception as e:
-#         pass
-#     input_file.close()
-    # return saved_games
+def ultimate_save():
+    save_submenu.display_menu()
 
 def save():
     print("already saved items: ")
@@ -58,7 +59,7 @@ def save_and_quit():
     output_file = open(json_file_name + '.json', 'w')
     json.dump(user.create_dictionary(), output_file)
     output_file.close()
-    Print("Your game is saved.")
+    print("Your game is saved.")
     exit()
 
 def save_rewrite_and_quit():
@@ -69,7 +70,7 @@ def save_rewrite_and_quit():
     output_file = open(json_file_name + '.json', 'w')
     json.dump(user.create_dictionary(), output_file)
     output_file.close()
-    Print("Your game is saved.")
+    print("Your game is saved.")
     exit()
 
 def resume():
@@ -117,13 +118,16 @@ def strike():
     after_strike_submenu.display_menu()
 
 def new_strike():
+    fight.after_strike()
     fight_submenu.display_menu()
 
 def retreat():
-    pass
+    print("You cannot retreat!")
+    fight_submenu.display_menu()
 
 def try_luck():
     pass
+
 
 main_menu = Menu([
     MenuItem(1, "New Game", new_game),
