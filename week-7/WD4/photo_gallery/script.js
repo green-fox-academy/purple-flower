@@ -22,52 +22,41 @@ var bigImage = document.querySelector('.big-image');
 var smallImageBox = document.querySelector('.thumb-box');
 
 smallImagesCreator();
+
 var first = document.getElementById('pic0');
 first.classList.add('active');
+
 var actives = smallImageBox.querySelectorAll('active');
 
 
-nextButton.addEventListener('click', function() {
-  moveToNextPicture();
-})
-
-previousButton.addEventListener('click', function() {
-  moveToPreviousPicture();
-})
+nextButton.addEventListener('click', moveToNextPicture);
+previousButton.addEventListener('click', moveToPreviousPicture);
 
 
 function moveToNextPicture() {
   if (currentPosition === images.length-1) {
     currentPosition = 0;
-    showBigPicture(images[currentPosition]);
   } else {
-    showBigPicture(images[++currentPosition]);
+    ++currentPosition;
   }
-  actives = smallImageBox.querySelectorAll('.active');
-  console.log(actives);
-  for (var i = 0; i < actives.length; i++) {
-    actives[i].classList.remove('active');
-  }
+  showBigPicture(images[currentPosition]);
+  setActivePic();
   document.getElementById('pic' + currentPosition).classList.add('active');
 }
 
 function moveToPreviousPicture() {
   if (currentPosition === 0) {
     currentPosition = images.length -1;
-    showBigPicture(images[currentPosition])
   } else {
-    showBigPicture(images[--currentPosition]);
+    --currentPosition;
   }
-  actives = smallImageBox.querySelectorAll('.active');
-  console.log(actives);
-  for (var i = 0; i < actives.length; i++) {
-    actives[i].classList.remove('active');
-  }
+  showBigPicture(images[currentPosition]);
+  setActivePic();
   document.getElementById('pic' + currentPosition).classList.add('active');
 }
 
 function showBigPicture (src) {
-  bigImage.setAttribute('src', src)
+  bigImage.setAttribute('src', src);
 }
 
 
@@ -77,7 +66,7 @@ function smallImagesCreator () {
     smallImage.setAttribute('id', 'pic' + i);
     smallImage.setAttribute('src', images[i]);
     smallImageBox.appendChild(smallImage);
-  };
+  }
 }
 
 
@@ -85,10 +74,13 @@ smallImageBox.addEventListener('click', function(event) {
   var smallImageSrc = event.target.getAttribute('src')
   showBigPicture(smallImageSrc);
   currentPosition = images.indexOf(smallImageSrc);
+  setActivePic();
+  event.target.classList.add('active');
+});
+
+function setActivePic() {
   actives = smallImageBox.querySelectorAll('.active');
-  console.log(actives);
   for (var i = 0; i < actives.length; i++) {
     actives[i].classList.remove('active');
   }
-  event.target.classList.add('active');
-});
+}

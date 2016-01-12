@@ -110,6 +110,13 @@ def begin_game():
     monster.print_start_status_monster()
     fight_submenu.display_menu()
 
+def retreat():
+    print("You cannot retreat")
+    begin_submenu.display_menu()
+
+def try_luck():
+    pass
+
 def strike():
     if fight.is_hit():
         print("You hit the monster!")
@@ -120,14 +127,6 @@ def strike():
 def new_strike():
     fight.after_strike()
     fight_submenu.display_menu()
-
-def retreat():
-    print("You cannot retreat!")
-    fight_submenu.display_menu()
-
-def try_luck():
-    pass
-
 
 main_menu = Menu([
     MenuItem(1, "New Game", new_game),

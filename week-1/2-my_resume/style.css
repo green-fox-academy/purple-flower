@@ -50,11 +50,11 @@ blockquote {
 }
 
 .flex-container {
+  display: flex;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
-  display: flex;
   margin: 0;
   padding: 0;
   justify-content: space-around;
