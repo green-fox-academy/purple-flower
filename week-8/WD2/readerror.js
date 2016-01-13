@@ -7,4 +7,5 @@ try{
 } catch(e) {
   content = 'para volt');
 }
-  console.log('end');
+
+console.log(String(content));
