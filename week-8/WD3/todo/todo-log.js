@@ -27,7 +27,7 @@ var todoContainer = document.querySelector('.todo-container');
 
 function todoCallback(response) {
   console.log(JSON.parse(response));
-  var todoItem = JSON.parse(response);
+  var todoArray = JSON.parse(response);
   todoArray.forEach(function (todoItem) {
     console.log(todoItem.text);
     var newTodoItem = document.createElement('p');
