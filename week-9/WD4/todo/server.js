@@ -6,12 +6,10 @@ var items = require("./items.js");
 
 var app = express();
 
-// items.complete(15);
-// items.complete(20);
-// items.complete(21);
-//
-// items.removeCompleted();
 
+items.add({text: 'Buy milk'});
+items.add({text: 'Make dinner'});
+items.add({text: 'Save the world'});
 
 app.use(logRequest);
 app.use(express.static("public"));
@@ -19,11 +17,10 @@ app.use(bodyParser.json());
 
 
 app.get("/todos", function (req, res) {
-  items.all(function(result) {
-    res.json(result);
+  items.all(function(docs) {
+      res.json(docs);
   });
 });
-
 
 
 app.post("/todos", function (req, res) {

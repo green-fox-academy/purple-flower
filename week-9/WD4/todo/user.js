@@ -24,7 +24,7 @@ function getUser(attributes) {
 
 function getUserById(attributes, callback) {
   connection.query(
-    'SELECT * FROM `user` WHERE user_id=? AND name=?', [attributes.user_id, attributes.user_name],
+    'SELECT * FROM `user` WHERE user_id=? AND name=?', [attributes.user_id, attributes.user_name];
     function(err, results) {
       if (err) throw err;
       console.log(results);

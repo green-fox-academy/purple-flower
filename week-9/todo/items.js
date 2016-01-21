@@ -8,6 +8,7 @@ var connection = mysql.createConnection({
   database: 'todo'
 });
 
+
 connection.connect();
 
 var TodoItem = function () {
@@ -28,8 +29,12 @@ function nextId() {
 
 var items = {};
 
-function getItem(id) {
-  return items[id];
+function getItem(todo_id) {
+  connection.query('SELECT * FROM todo WHERE todo_id=?', todo_id,
+    function(err, result) {
+      if (err) throw err;
+      return (result);
+    });
 }
 
 function addItem(attributes) {
@@ -39,21 +44,45 @@ function addItem(attributes) {
   });
 }
 
-function removeItem(id) {
-  delete items[id];
+//remove comleted todo items
+function removeCompletedItem() {
+  connection.query('DELETE FROM todo WHERE status="completed"',
+    function(err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
 }
 
-function allItems() {
-  var values = [];
-  for (id in items) {
-    values.push(items[id]);
-  }
-  return values;
+//remove selected todo items
+function removeItem(todo_id) {
+  connection.query('DELETE FROM todo WHERE todo_id=?', todo_id,
+    function(err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
+}
+
+function setItemCompleted(todo_id) {
+  connection.query('UPDATE todo SET status="completed" WHERE todo_id=?', todo_id,
+    function(err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
+}
+
+function allItems(callback) {
+  connection.query('SELECT * FROM todo',
+  function(err, result) {
+    if (err) throw err;
+    return callback(result);
+  });
 }
 
 module.exports = {
   get: getItem,
   add: addItem,
   remove: removeItem,
+  removeCompleted: removeCompletedItem,
+  complete: setItemCompleted,
   all: allItems,
 };
