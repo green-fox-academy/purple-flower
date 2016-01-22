@@ -11,37 +11,28 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-var TodoItem = function () {
-  this.id = nextId();
-  this.text = "";
-  this.completed = false;
+function allItems(callback) {
+  connection.query('SELECT * FROM todo',
+  function(err, result) {
+    if (err) throw err;
+    return callback(result);
+  });
 }
 
-TodoItem.prototype.update = function(attributes) {
-  this.text = attributes.text || "";
-  this.completed = !!attributes.completed;
-};
-
-var currId = 0;
-function nextId() {
-  return ++currId;
+function addItem(item, cb) {
+  connection.query('INSERT INTO todo SET text=?', item, function(err, result) {
+    if (err) throw err;
+    cb(result)
+  });
 }
 
-var items = {};
 
-function getItem(todo_id) {
-  connection.query('SELECT * FROM todo WHERE todo_id=?', todo_id,
+function setItemCompleted(todo_id) {
+  connection.query('UPDATE todo SET status="completed" WHERE todo_id=?', todo_id,
     function(err, result) {
       if (err) throw err;
-      return (result);
+      console.log(result);
     });
-}
-
-function addItem(attributes) {
-  connection.query('INSERT INTO todo SET ?', attributes, function(err, result) {
-    if (err) throw err;
-    console.log(result.insertId);
-  });
 }
 
 //remove comleted todo items
@@ -54,32 +45,16 @@ function removeCompletedItem() {
 }
 
 //remove selected todo items
-function removeItem(todo_id) {
+function removeItem(todo_id, cb) {
   connection.query('DELETE FROM todo WHERE todo_id=?', todo_id,
     function(err, result) {
       if (err) throw err;
-      console.log(result);
+      cb(result)
     });
 }
 
-function setItemCompleted(todo_id) {
-  connection.query('UPDATE todo SET status="completed" WHERE todo_id=?', todo_id,
-    function(err, result) {
-      if (err) throw err;
-      console.log(result);
-    });
-}
-
-function allItems(callback) {
-  connection.query('SELECT * FROM todo',
-  function(err, result) {
-    if (err) throw err;
-    return callback(result);
-  });
-}
 
 module.exports = {
-  get: getItem,
   add: addItem,
   remove: removeItem,
   removeCompleted: removeCompletedItem,

@@ -8,8 +8,22 @@ var completeItemButton = document.querySelector('.complete-item-button');
 var removeCompletedItemsButton = document.querySelector('.remove-completed-items-button');
 
 
+function createRequest(method, url, data, callback) {
+  var todoRequest = new XMLHttpRequest();
+  todoRequest.open(method, url);
+  todoRequest.setRequestHeader('Content-Type', 'application/json');
+  todoRequest.send(data);
+  todoRequest.onreadystatechange = function() {
+    console.log(todoRequest.response)
+    if (todoRequest.readyState === 4) {
+      return callback(todoRequest.response);
+    }
+  };
+}
+
 var listCallback = function(response) {
   var todoItems = JSON.parse(response);
+  todoContainer.innerHTML = "";
   todoItems.forEach(function(todoItem) {
     var newTodoItem = document.createElement('p');
     newTodoItem.setAttribute('id', todoItem.id);
@@ -20,29 +34,17 @@ var listCallback = function(response) {
 }
 
 var refresh = function() {
-  todoContainer.innerHTML = "";
   createRequest('GET', url, {}, listCallback);
 }
+refresh();
 
+var createTodoCallback = function (response) {
+  refresh();
+}
 
 addButton.addEventListener('click', function() {
   var newTodo = JSON.stringify({text: todoInput.value});
-  var createTodoCallback = function (response) {
-    refresh();
-  }
-  // todoInput.innerText = "Write your next ToDo here!";
   createRequest('POST', url, newTodo, createTodoCallback);
+  todoInput.value = "";
+
 });
-
-
-// removeCompletedItemsButton.addEventListener('click', function() {
-//
-// })
-
-// var completedTodo = JSON({completed: true});
-//
-// function setCompleted() {
-//
-// }
-//
-// createRequest('PUT', url, )

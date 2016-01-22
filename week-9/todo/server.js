@@ -13,7 +13,7 @@ var app = express();
 // items.removeCompleted();
 
 
-app.use(logRequest);
+
 app.use(express.static("public"));
 app.use(bodyParser.json());
 
@@ -27,27 +27,22 @@ app.get("/todos", function (req, res) {
 
 
 app.post("/todos", function (req, res) {
-  var item = items.add(req.body);
-  res.status(201).json(item);
+  var item = items.add(req.body.text, function(item){
+  res.json(item);
+ })
 });
 
 
-app.get("/todos/:id", function (req, res) {
-  findItem(req, res, function (item) { res.json(item); });
-});
 
-
-app.put("/todos/:id", function (req, res) {
-  findItem(req, res, function (item) {
-    item.update(req.body);
-    res.json(item);
-  });
-});
+// app.put("/todos/:id", function (req, res) {
+//   findItem(req, res, function (item) {
+//     item.update(req.body);
+//     res.json(item);
+//   });
+// });
 
 app.delete("/todos/:id", function (req, res) {
-  findItem(req, res, function (item) {
-    items.remove(item.id);
-    item.destroyed = true;
+  items.remove(req.params.id, function (item) {
     res.json(item);
   });
 });
@@ -55,24 +50,3 @@ app.delete("/todos/:id", function (req, res) {
 app.listen(3000, function () {
   console.log("Listening on port 3000...")
 });
-
-function findItem(req, res, found) {
-  var id = parseInt(req.params.id);
-  var item = items.get(id);
-  if (item) {
-    found(item);
-  } else {
-    res.status(404).json({error: "Item not found"})
-  }
-}
-
-function logRequest(req, res, next) {
-  var parts = [
-    new Date(),
-    req.method,
-    req.originalUrl,
-  ];
-  console.log(parts.join(" "));
-
-  next();
-}

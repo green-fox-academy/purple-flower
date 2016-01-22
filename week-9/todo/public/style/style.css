@@ -45,3 +45,7 @@ button {
 textarea {
   margin: 5px 5px 5px 8px;
 }
+
+.todo-container {
+  padding-left: 10px;
+}
