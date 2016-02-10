@@ -54,7 +54,7 @@
 
 	  render: function render() {
 	    return React.createElement(
-	      'div',
+	      'h1',
 	      null,
 	      'Hello World'
 	    );

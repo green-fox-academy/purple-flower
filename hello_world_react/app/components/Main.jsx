@@ -4,9 +4,9 @@ var ReactDOM = require('react-dom');
 var Main = React.createClass({
   render: function() {
     return (
-      <div>
+      <h1>
       Hello World
-      </div>
+      </h1>
     )
   }
 });
