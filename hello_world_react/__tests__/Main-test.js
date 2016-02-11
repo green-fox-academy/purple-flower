@@ -1,3 +1,5 @@
+'use strict';
+
 jest.dontMock('../app/components/Main.jsx');
 
 var React = require('react');
@@ -7,6 +9,8 @@ var TestUtils = require('react-addons-test-utils');
 var Main = require('../app/components/Main.jsx');
 
 describe('Main', function() {
+  var h1;
+
   it('should exists', function() {
     var renderedComponent = TestUtils.renderIntoDocument(
       <Main />
