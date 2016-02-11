@@ -12,13 +12,16 @@ describe('Main', function() {
       <Main />
     );
     expect(TestUtils.isCompositeComponent(renderedComponent)).toBeTruthy();
+
+    var renderedh1 = TestUtils.findRenderedDOMComponentWithTag(renderedComponent, 'h1'
+    );
+
+    h1 = ReactDOM.findDOMNode(renderedh1);
   });
 
-  //
-  // var h1 = TestUtils.findRenderedDOMComponentWithTag(renderedComponent, 'h1'
-  // );
-  //
-  // expect(h1.textContent).toEqual("Hello World");
+  it('contain Hello World text', function() {
+    expect(h1.textContent).toEqual("Hello World");
 
+  });
 
 });
