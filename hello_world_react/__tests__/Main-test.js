@@ -7,14 +7,18 @@ var TestUtils = require('react-addons-test-utils');
 var Main = require('../app/components/Main.jsx');
 
 describe('Main', function() {
-  it('render', function() {
+  it('should exists', function() {
     var renderedComponent = TestUtils.renderIntoDocument(
       <Main />
     );
-
-    var h1 = TestUtils.findRenderedDOMComponentWithTag(renderedComponent, 'h1'
-      );
-
-    this.titleElement = h1.getDOMNode();
+    expect(TestUtils.isCompositeComponent(renderedComponent)).toBeTruthy();
   });
+
+  //
+  // var h1 = TestUtils.findRenderedDOMComponentWithTag(renderedComponent, 'h1'
+  // );
+  //
+  // expect(h1.textContent).toEqual("Hello World");
+
+
 });

@@ -48,21 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
+	var Main = __webpack_require__(159);
 
-	var Main = React.createClass({
-	  displayName: 'Main',
-
-
-	  render: function render() {
-	    return React.createElement(
-	      'h1',
-	      null,
-	      'Hello World'
-	    );
-	  }
-	});
-
-	module.exports = Main;
+	ReactDOM.render(React.createElement(Main, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -19664,6 +19652,29 @@
 
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(158);
+
+	var Main = React.createClass({
+	  displayName: 'Main',
+
+	  render: function render() {
+	    return React.createElement(
+	      'h1',
+	      null,
+	      'Hello World'
+	    );
+	  }
+	});
+
+	module.exports = Main;
 
 /***/ }
 /******/ ]);
