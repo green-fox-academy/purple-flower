@@ -52,6 +52,7 @@
 	var Main = React.createClass({
 	  displayName: 'Main',
 
+
 	  render: function render() {
 	    return React.createElement(
 	      'h1',
@@ -61,7 +62,7 @@
 	  }
 	});
 
-	ReactDOM.render(React.createElement(Main, null), document.getElementById('app'));
+	module.exports = Main;
 
 /***/ },
 /* 1 */
